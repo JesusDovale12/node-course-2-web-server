@@ -22,11 +22,11 @@ app.use((req, res, next) => {
 	next();	
 });
 
-app.use((req, res, next) => {
+/*app.use((req, res, next) => {
 	res.render('maintenance.hbs'); 
 });
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));*/
 
 hbs.registerHelper('getCurrentYear', () => {
 	return new Date().getFullYear()
@@ -54,6 +54,12 @@ app.get('/', (req, res) =>{
 app.get('/bad', (req, res) => {
 	res.send({
 		errorMessage: 'Unable to handle request'
+	});
+});
+
+app.get('page/projects', (req, res) => {
+	res.render('projects.hbs', {
+		pageTitle: Projects
 	});
 });
 
